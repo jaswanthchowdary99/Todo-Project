@@ -1,3 +1,6 @@
+
+
+//////// For displaying the tasks after pressing enter
 function addTodo(event) {
     if (event.key === 'Enter') {
         const inputBox = document.getElementById('input-box');
@@ -35,6 +38,7 @@ function addTodo(event) {
             // Check if there are no tasks left, then hide the lists
             if (taskList.children.length === 0) {
                 listsDiv.style.display = 'none';
+                hideSelectAllArrow();
             }
         });
 
@@ -46,18 +50,19 @@ function addTodo(event) {
         inputBox.value = '';
         updateTaskCount();
 
-        // Toggle the visibility of the "lists" div only when a task is added
         listsDiv.style.display = 'block';
         showSelectAllArrow();
     }
 }
+
+/////// For displaying arrow
 function showSelectAllArrow() {
     const selectAllArrow = document.querySelector('.select-all');
     if (selectAllArrow) {
         selectAllArrow.style.display = 'inline-block';
     }
 }
-
+/////// For selecting all tasks 
 function selectAllTasks() {
     const checkboxes = document.querySelectorAll('.task-checkbox');
     checkboxes.forEach(checkbox => {
@@ -65,6 +70,7 @@ function selectAllTasks() {
     });
 }
 
+/////// To filter all the tasks
 function todo(filter) {
     const taskList = document.getElementById('task-list');
     const taskContainers = taskList.children;
@@ -81,14 +87,14 @@ function todo(filter) {
             break;
     }
 }
-
+////// For showing all tasks
 function showAllTasks(taskContainers) {
     for (const taskContainer of taskContainers) {
         taskContainer.style.display = 'block';
     }
     updateTaskCount();
 }
-
+////////// For showing active tasks
 function showActiveTasks(taskContainers) {
     for (const taskContainer of taskContainers) {
         const checkbox = taskContainer.querySelector('.task-checkbox');
@@ -100,7 +106,7 @@ function showActiveTasks(taskContainers) {
     }
     updateTaskCount();
 }
-
+///////// For showing completing tasks
 function showCompletedTasks(taskContainers) {
     for (const taskContainer of taskContainers) {
         const checkbox = taskContainer.querySelector('.task-checkbox');
@@ -112,7 +118,7 @@ function showCompletedTasks(taskContainers) {
     }
     updateTaskCount();
 }
-
+////////// For deleting all the selected tasks
 function clearCompleted() {
     const taskList = document.getElementById('task-list');
     const completedTasks = taskList.querySelectorAll('.task-container input:checked');
@@ -124,7 +130,6 @@ function clearCompleted() {
 
     updateTaskCount();
 
-    // Check if there are no tasks left, then hide the lists
     if (taskList.children.length === 0) {
         const listsDiv = document.querySelector('.lists');
         listsDiv.style.display = 'none';
@@ -132,6 +137,8 @@ function clearCompleted() {
         hideSelectAllArrow();
     }
 }
+
+/////// For hiding the arrow 
 function hideSelectAllArrow() {
     const selectAllArrow = document.querySelector('.select-all');
     if (selectAllArrow) {
@@ -139,6 +146,7 @@ function hideSelectAllArrow() {
     }
 }
 
+///////// Counting the number of tasks
 function updateTaskCount() {
     const taskList = document.getElementById('task-list');
     const totalTasks = taskList.children.length;
