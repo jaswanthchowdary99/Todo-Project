@@ -7,6 +7,13 @@ function addTodo(event) {
         const taskList = document.getElementById('task-list');
         const listsDiv = document.querySelector('.lists');
 
+        const inputValue = inputBox.value.trim();
+
+        
+        if (inputValue === '') {
+            return alert('Enter something');
+        }
+
         const taskContainer = document.createElement('div');
         taskContainer.className = 'task-container';
 
@@ -15,7 +22,7 @@ function addTodo(event) {
         checkbox.className = 'task-checkbox';
 
         const label = document.createElement('label');
-        label.textContent = inputBox.value;
+        label.textContent = inputValue;
         label.className = 'editable';
         label.addEventListener('dblclick', function () {
             this.contentEditable = true;
@@ -50,10 +57,17 @@ function addTodo(event) {
         inputBox.value = '';
         updateTaskCount();
 
-        listsDiv.style.display = 'block';
-        showSelectAllArrow();
+        // Check if there are tasks, then display the lists else hie the the lists
+        if (taskList.children.length > 0) {
+            listsDiv.style.display = 'block';
+            showSelectAllArrow();
+        } else {
+            listsDiv.style.display = 'none';
+            hideSelectAllArrow();
+        }
     }
 }
+
 
 /////// For displaying arrow
 function showSelectAllArrow() {
