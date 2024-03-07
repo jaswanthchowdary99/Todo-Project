@@ -72,7 +72,24 @@ p{
 
 .lists li{
     padding: 30px;
+    margin: 0;
 }
+.lists button,
+.lists a {
+    background: transparent;
+    border: 1px solid transparent; /* Set initial border color to transparent */
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font-size: 17px;
+    transition: border-color 0.3s; /* Add a transition for a smooth effect */
+}
+
+.lists button:hover{
+    border-color: #b83f45; /* Change the border color on hover */
+}
+.lists a:hover
+
 li{
     list-style: none;
     margin: 5px;
@@ -103,3 +120,19 @@ button{
 }
 
 
+.container {
+    position: relative;
+}
+
+.new-todo {
+    padding-right: 30px; 
+}
+
+.select-all {
+    position:fixed;
+    top: 33%;
+    left: 400px;     
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+}
