@@ -1,8 +1,7 @@
 
 
 
-//////// For displaying the tasks after pressing enter
-// Array to store tasks
+
 let tasksArray = [];
 
 //////// For displaying the tasks after pressing enter
